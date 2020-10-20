@@ -1,6 +1,6 @@
 package com.uber.api.models;
 
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +8,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import java.util.List;
 
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "account")
 public class Account extends Auditable {
@@ -18,6 +21,7 @@ public class Account extends Auditable {
     private String password;
 
     @ManyToMany
+    @Singular
     private List<Role> roles;
 }
 

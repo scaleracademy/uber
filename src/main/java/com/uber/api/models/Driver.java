@@ -36,7 +36,6 @@ public class Driver extends Auditable {
     private Account account;
 }
 
-
 // inheritance is an OOP concept - objects and relations
 // DBs don't have inheritance - tables/rows and relations
 

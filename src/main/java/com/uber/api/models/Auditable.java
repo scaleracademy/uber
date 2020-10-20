@@ -8,27 +8,28 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Getter
 @Setter
 @EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
-public abstract class Auditable {
+public abstract class Auditable implements Serializable {
     @Id
     @GeneratedValue
     @SequenceGenerator(name = "idsequence", allocationSize = 10)
     private Long id;
-
-    @Column(nullable = false, updatable = false)
+//
+//    @Column(nullable = false, updatable = false)
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createAt;
+    private Date createdAt = new Date();
 
-    @Column(nullable = false, updatable = true)
+//    @Column(nullable = false, updatable = true)
     @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
-    private Date updatedAt;
+    private Date updatedAt = new Date();
 
     @Override
     public int hashCode() {
